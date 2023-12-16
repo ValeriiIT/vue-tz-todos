@@ -31,7 +31,7 @@
         <div class="block-edit-delete">
           <button class="btn-edit">Редактировать</button>
           <button
-              @click="state.deleteTodos(todo.id),fndelete()"
+              @click="state.deleteTodos(todo.id)"
               class="btn-delete"
           >
             Удалить
@@ -44,22 +44,9 @@
 </template>
 <script setup lang="ts">
 import {searchStore} from "@/stores/SearchStore";
-import {onBeforeUpdate, onUnmounted, onUpdated} from "vue";
 
 const state = searchStore()
 state.getTodos()
-
-onUnmounted(() => {
-  state.getTodos()
-})
-
-const fndelete = () => {
-    state.getTodos()
-    onUpdated(() => {
-      state.getTodos()
-    })
-}
-
 
 </script>
 <style scoped>
