@@ -22,6 +22,7 @@ export const  searchStore = defineStore("searchStore", {
         if (data.id == !id){
           return this.todos = data
         }
+        this.getTodos()
         return id
     },
   }

@@ -106,7 +106,6 @@ const add = () => {
       lastName:lastNameInp.value,
       firstName:firstNameInp.value
     }
-    console.log(obj)
     state.addTodos(obj)
     lastNameInp.value = ''
     firstNameInp.value = ''

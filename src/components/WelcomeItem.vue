@@ -22,7 +22,7 @@
         </RouterLink>
 
       </div>
-      <div v-for="todo in state.todos" class="todo-content">
+      <div v-for="todo in store.todos" class="todo-content">
         <div key="{{todo.id}}">
           <p class="todo-content-h">Форма регистрации участников</p>
           <div class="todo-user">Автор:<p class="date">{{todo.firstName}}</p></div>
@@ -31,7 +31,7 @@
         <div class="block-edit-delete">
           <button class="btn-edit">Редактировать</button>
           <button
-              @click="state.deleteTodos(todo.id)"
+              @click="store.deleteTodos(todo.id)"
               class="btn-delete"
           >
             Удалить
@@ -44,9 +44,15 @@
 </template>
 <script setup lang="ts">
 import {searchStore} from "@/stores/SearchStore";
+import {onMounted, ref} from "vue";
 
 const state = searchStore()
-state.getTodos()
+
+const store = ref(state)
+onMounted(() => {
+  store.value.getTodos()
+})
+
 
 </script>
 <style scoped>
