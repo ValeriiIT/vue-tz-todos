@@ -90,7 +90,7 @@
 </template>
 <script setup>
 import {searchStore} from "@/stores/SearchStore.ts";
-import {onBeforeUpdate, onUpdated, ref, watchEffect} from "vue";
+import {ref, watchEffect} from "vue";
 const state = searchStore()
 const lastNameInp = ref("")
 const firstNameInp = ref("")
@@ -101,7 +101,7 @@ watchEffect(() => {
   isFirsNameValid = firstNameInp.value > " "
 })
 const add = () => {
-  if (lastNameInp.value||firstNameInp.value > ' '){
+  if (lastNameInp.value&&firstNameInp.value > ' '){
     const obj = {
       lastName:lastNameInp.value,
       firstName:firstNameInp.value
